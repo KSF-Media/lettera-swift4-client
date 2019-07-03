@@ -1,0 +1,20 @@
+# ListArticle
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**uuid** | **UUID** |  | 
+**title** | **String** |  | 
+**authors** | [Author] |  | 
+**tags** | **[String]** |  | 
+**preamble** | **String** |  | [optional] 
+**listImage** | [**ImageInfo**](ImageInfo.md) |  | [optional] 
+**premium** | **Bool** |  | 
+**publishingTime** | **String** |  | 
+**updateTime** | **String** |  | [optional] 
+**relatedArticles** | [RelatedArticle] |  | 
+**articleType** | [**ArticleType**](ArticleType.md) |  | 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
