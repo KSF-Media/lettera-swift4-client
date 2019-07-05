@@ -41,7 +41,6 @@ Class | Method | HTTP request | Description
  - [ArticleType](docs/ArticleType.md)
  - [Author](docs/Author.md)
  - [Block](docs/Block.md)
- - [Category](docs/Category.md)
  - [CategoryHierarchy](docs/CategoryHierarchy.md)
  - [FactInfo](docs/FactInfo.md)
  - [ImageInfo](docs/ImageInfo.md)

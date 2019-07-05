@@ -12,43 +12,6 @@ import Alamofire
 
 open class ListsAPI {
     /**
-     * enum for parameter category
-     */
-    public enum Category_frontpageGet: String {
-        case framsidan = "Framsidan"
-        case nyheter = "Nyheter"
-        case ekonomi = "Ekonomi"
-        case nordenOchVarlden = "NordenOchVarlden"
-        case finland = "Finland"
-        case klimatOchMiljo = "KlimatOchMiljo"
-        case kultur = "Kultur"
-        case litteratur = "Litteratur"
-        case musik = "Musik"
-        case scen = "Scen"
-        case konst = "Konst"
-        case filmOchTv = "FilmOchTv"
-        case opinion = "Opinion"
-        case ledare = "Ledare"
-        case kolumner = "Kolumner"
-        case debatt = "Debatt"
-        case kronikor = "Kronikor"
-        case sport = "Sport"
-        case handboll = "Handboll"
-        case fotboll = "Fotboll"
-        case ishockey = "Ishockey"
-        case motorsport = "Motorsport"
-        case friidrott = "Friidrott"
-        case skidsport = "Skidsport"
-        case livsstil = "Livsstil"
-        case medicinOchHalsa = "MedicinOchHalsa"
-        case familjOchRelationer = "FamiljOchRelationer"
-        case matOchDryck = "MatOchDryck"
-        case resor = "Resor"
-        case bilarOchFordon = "BilarOchFordon"
-        case hemOchTradgard = "HemOchTradgard"
-    }
-
-    /**
      Returns a list for a front page
      
      - parameter start: (query)  (optional)
@@ -56,7 +19,7 @@ open class ListsAPI {
      - parameter category: (query)  (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func frontpageGet(start: Int? = nil, limit: Int? = nil, category: Category_frontpageGet? = nil, completion: @escaping ((_ data: [ListArticle]?,_ error: Error?) -> Void)) {
+    open class func frontpageGet(start: Int? = nil, limit: Int? = nil, category: String? = nil, completion: @escaping ((_ data: [ListArticle]?,_ error: Error?) -> Void)) {
         frontpageGetWithRequestBuilder(start: start, limit: limit, category: category).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -70,7 +33,7 @@ open class ListsAPI {
      - parameter category: (query)  (optional)
      - returns: RequestBuilder<[ListArticle]> 
      */
-    open class func frontpageGetWithRequestBuilder(start: Int? = nil, limit: Int? = nil, category: Category_frontpageGet? = nil) -> RequestBuilder<[ListArticle]> {
+    open class func frontpageGetWithRequestBuilder(start: Int? = nil, limit: Int? = nil, category: String? = nil) -> RequestBuilder<[ListArticle]> {
         let path = "/frontpage"
         let URLString = letteraAPI.basePath + path
         let parameters: [String:Any]? = nil
@@ -79,7 +42,7 @@ open class ListsAPI {
         url?.queryItems = APIHelper.mapValuesToQueryItems([
             "start": start?.encodeToJSON(), 
             "limit": limit?.encodeToJSON(), 
-            "category": category?.rawValue
+            "category": category
         ])
 
         let requestBuilder: RequestBuilder<[ListArticle]>.Type = letteraAPI.requestBuilderFactory.getBuilder()

@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 # **frontpageGet**
 ```swift
-    open class func frontpageGet(start: Int? = nil, limit: Int? = nil, category: Category_frontpageGet? = nil, completion: @escaping (_ data: [ListArticle]?, _ error: Error?) -> Void)
+    open class func frontpageGet(start: Int? = nil, limit: Int? = nil, category: String? = nil, completion: @escaping (_ data: [ListArticle]?, _ error: Error?) -> Void)
 ```
 
 Returns a list for a front page

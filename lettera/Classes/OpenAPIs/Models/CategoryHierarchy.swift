@@ -11,10 +11,10 @@ import Foundation
 
 public struct CategoryHierarchy: Codable {
 
-    public var name: Category
-    public var subcategories: [Category]
+    public var name: String
+    public var subcategories: [String]
 
-    public init(name: Category, subcategories: [Category]) {
+    public init(name: String, subcategories: [String]) {
         self.name = name
         self.subcategories = subcategories
     }
