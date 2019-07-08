@@ -91,10 +91,11 @@ open class ListsAPI {
      
      - parameter start: (query)  (optional)
      - parameter limit: (query)  (optional)
+     - parameter category: (query)  (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func mostreadGet(start: Int? = nil, limit: Int? = nil, completion: @escaping ((_ data: [ListArticle]?,_ error: Error?) -> Void)) {
-        mostreadGetWithRequestBuilder(start: start, limit: limit).execute { (response, error) -> Void in
+    open class func mostreadGet(start: Int? = nil, limit: Int? = nil, category: String? = nil, completion: @escaping ((_ data: [ListArticle]?,_ error: Error?) -> Void)) {
+        mostreadGetWithRequestBuilder(start: start, limit: limit, category: category).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -104,9 +105,10 @@ open class ListsAPI {
      - GET /mostread
      - parameter start: (query)  (optional)
      - parameter limit: (query)  (optional)
+     - parameter category: (query)  (optional)
      - returns: RequestBuilder<[ListArticle]> 
      */
-    open class func mostreadGetWithRequestBuilder(start: Int? = nil, limit: Int? = nil) -> RequestBuilder<[ListArticle]> {
+    open class func mostreadGetWithRequestBuilder(start: Int? = nil, limit: Int? = nil, category: String? = nil) -> RequestBuilder<[ListArticle]> {
         let path = "/mostread"
         let URLString = letteraAPI.basePath + path
         let parameters: [String:Any]? = nil
@@ -114,7 +116,8 @@ open class ListsAPI {
         var url = URLComponents(string: URLString)
         url?.queryItems = APIHelper.mapValuesToQueryItems([
             "start": start?.encodeToJSON(), 
-            "limit": limit?.encodeToJSON()
+            "limit": limit?.encodeToJSON(), 
+            "category": category
         ])
 
         let requestBuilder: RequestBuilder<[ListArticle]>.Type = letteraAPI.requestBuilderFactory.getBuilder()

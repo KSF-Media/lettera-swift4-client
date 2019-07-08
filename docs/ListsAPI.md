@@ -113,7 +113,7 @@ No authorization required
 
 # **mostreadGet**
 ```swift
-    open class func mostreadGet(start: Int? = nil, limit: Int? = nil, completion: @escaping (_ data: [ListArticle]?, _ error: Error?) -> Void)
+    open class func mostreadGet(start: Int? = nil, limit: Int? = nil, category: String? = nil, completion: @escaping (_ data: [ListArticle]?, _ error: Error?) -> Void)
 ```
 
 Returns a list of most read articles
@@ -125,9 +125,10 @@ import lettera
 
 let start = 987 // Int |  (optional)
 let limit = 987 // Int |  (optional)
+let category = "category_example" // String |  (optional)
 
 // Returns a list of most read articles
-ListsAPI.mostreadGet(start: start, limit: limit) { (response, error) in
+ListsAPI.mostreadGet(start: start, limit: limit, category: category) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -145,6 +146,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **start** | **Int** |  | [optional] 
  **limit** | **Int** |  | [optional] 
+ **category** | **String** |  | [optional] 
 
 ### Return type
 
