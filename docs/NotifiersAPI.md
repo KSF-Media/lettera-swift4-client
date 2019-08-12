@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 # **notifyPost**
 ```swift
-    open class func notifyPost(body: String, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func notifyPost(body: Notification, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 Listens to OC Notifier
@@ -19,7 +19,7 @@ Listens to OC Notifier
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import lettera
 
-let body = "body_example" // String | 
+let body = Notification(contentType: "contentType_example", eventid: 123, eventtype: EventType(), uuid: 123) // Notification | 
 
 // Listens to OC Notifier
 NotifiersAPI.notifyPost(body: body) { (response, error) in
@@ -38,7 +38,7 @@ NotifiersAPI.notifyPost(body: body) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **String** |  | 
+ **body** | [**Notification**](Notification.md) |  | 
 
 ### Return type
 

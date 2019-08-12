@@ -17,7 +17,7 @@ open class NotifiersAPI {
      - parameter body: (body)  
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func notifyPost(body: String, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func notifyPost(body: Notification, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
         notifyPostWithRequestBuilder(body: body).execute { (response, error) -> Void in
             if error == nil {
                 completion((), error)
@@ -33,7 +33,7 @@ open class NotifiersAPI {
      - parameter body: (body)  
      - returns: RequestBuilder<Void> 
      */
-    open class func notifyPostWithRequestBuilder(body: String) -> RequestBuilder<Void> {
+    open class func notifyPostWithRequestBuilder(body: Notification) -> RequestBuilder<Void> {
         let path = "/notify"
         let URLString = letteraAPI.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)

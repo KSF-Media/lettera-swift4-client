@@ -42,9 +42,11 @@ Class | Method | HTTP request | Description
  - [Author](docs/Author.md)
  - [Block](docs/Block.md)
  - [CategoryHierarchy](docs/CategoryHierarchy.md)
+ - [EventType](docs/EventType.md)
  - [FactInfo](docs/FactInfo.md)
  - [ImageInfo](docs/ImageInfo.md)
  - [ListArticle](docs/ListArticle.md)
+ - [Notification](docs/Notification.md)
  - [RelatedArticle](docs/RelatedArticle.md)
 
 
