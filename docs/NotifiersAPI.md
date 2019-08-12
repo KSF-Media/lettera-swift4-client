@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 # **notifyPost**
 ```swift
-    open class func notifyPost(body: Notification, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func notifyPost(body: Notification, token: String? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 Listens to OC Notifier
@@ -20,9 +20,10 @@ Listens to OC Notifier
 import lettera
 
 let body = Notification(contentType: "contentType_example", eventid: 123, eventtype: EventType(), uuid: 123) // Notification | 
+let token = "token_example" // String |  (optional)
 
 // Listens to OC Notifier
-NotifiersAPI.notifyPost(body: body) { (response, error) in
+NotifiersAPI.notifyPost(body: body, token: token) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -39,6 +40,7 @@ NotifiersAPI.notifyPost(body: body) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Notification**](Notification.md) |  | 
+ **token** | **String** |  | [optional] 
 
 ### Return type
 

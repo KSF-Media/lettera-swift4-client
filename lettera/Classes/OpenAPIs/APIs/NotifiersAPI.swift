@@ -15,10 +15,11 @@ open class NotifiersAPI {
      Listens to OC Notifier
      
      - parameter body: (body)  
+     - parameter token: (query)  (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func notifyPost(body: Notification, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
-        notifyPostWithRequestBuilder(body: body).execute { (response, error) -> Void in
+    open class func notifyPost(body: Notification, token: String? = nil, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+        notifyPostWithRequestBuilder(body: body, token: token).execute { (response, error) -> Void in
             if error == nil {
                 completion((), error)
             } else {
@@ -31,14 +32,18 @@ open class NotifiersAPI {
      Listens to OC Notifier
      - POST /notify
      - parameter body: (body)  
+     - parameter token: (query)  (optional)
      - returns: RequestBuilder<Void> 
      */
-    open class func notifyPostWithRequestBuilder(body: Notification) -> RequestBuilder<Void> {
+    open class func notifyPostWithRequestBuilder(body: Notification, token: String? = nil) -> RequestBuilder<Void> {
         let path = "/notify"
         let URLString = letteraAPI.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
 
-        let url = URLComponents(string: URLString)
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems([
+            "token": token
+        ])
 
         let requestBuilder: RequestBuilder<Void>.Type = letteraAPI.requestBuilderFactory.getNonDecodableBuilder()
 
