@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **publishingTime** | **String** |  | 
 **updateTime** | **String** |  | [optional] 
 **articleType** | [**ArticleType**](ArticleType.md) |  | 
+**articleTypeDetails** | [**ArticleTypeDetails**](ArticleTypeDetails.md) |  | [optional] 
 **externalScripts** | **[String]** |  | [optional] 
 **relatedArticles** | [RelatedArticle] |  | 
 **shareUrl** | **String** |  | [optional] 

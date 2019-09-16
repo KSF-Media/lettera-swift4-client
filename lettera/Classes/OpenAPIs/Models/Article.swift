@@ -23,11 +23,12 @@ public struct Article: Codable {
     public var publishingTime: String
     public var updateTime: String?
     public var articleType: ArticleType
+    public var articleTypeDetails: ArticleTypeDetails?
     public var externalScripts: [String]?
     public var relatedArticles: [RelatedArticle]
     public var shareUrl: String?
 
-    public init(uuid: UUID, title: String, authors: [Author], tags: [String], preamble: String?, mainImage: ImageInfo?, listImage: ImageInfo?, body: [Block], premium: Bool, publishingTime: String, updateTime: String?, articleType: ArticleType, externalScripts: [String]?, relatedArticles: [RelatedArticle], shareUrl: String?) {
+    public init(uuid: UUID, title: String, authors: [Author], tags: [String], preamble: String?, mainImage: ImageInfo?, listImage: ImageInfo?, body: [Block], premium: Bool, publishingTime: String, updateTime: String?, articleType: ArticleType, articleTypeDetails: ArticleTypeDetails?, externalScripts: [String]?, relatedArticles: [RelatedArticle], shareUrl: String?) {
         self.uuid = uuid
         self.title = title
         self.authors = authors
@@ -40,6 +41,7 @@ public struct Article: Codable {
         self.publishingTime = publishingTime
         self.updateTime = updateTime
         self.articleType = articleType
+        self.articleTypeDetails = articleTypeDetails
         self.externalScripts = externalScripts
         self.relatedArticles = relatedArticles
         self.shareUrl = shareUrl
