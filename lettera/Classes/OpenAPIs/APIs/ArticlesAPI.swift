@@ -54,10 +54,11 @@ open class ArticlesAPI {
      - parameter uuid: (path)  
      - parameter authUser: (header)  (optional)
      - parameter authorization: (header)  (optional)
+     - parameter textonly: (query)  (optional, default to false)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func articleUuidGet(uuid: UUID, authUser: UUID? = nil, authorization: String? = nil, completion: @escaping ((_ data: Article?,_ error: Error?) -> Void)) {
-        articleUuidGetWithRequestBuilder(uuid: uuid, authUser: authUser, authorization: authorization).execute { (response, error) -> Void in
+    open class func articleUuidGet(uuid: UUID, authUser: UUID? = nil, authorization: String? = nil, textonly: Bool? = nil, completion: @escaping ((_ data: Article?,_ error: Error?) -> Void)) {
+        articleUuidGetWithRequestBuilder(uuid: uuid, authUser: authUser, authorization: authorization, textonly: textonly).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -68,9 +69,10 @@ open class ArticlesAPI {
      - parameter uuid: (path)  
      - parameter authUser: (header)  (optional)
      - parameter authorization: (header)  (optional)
+     - parameter textonly: (query)  (optional, default to false)
      - returns: RequestBuilder<Article> 
      */
-    open class func articleUuidGetWithRequestBuilder(uuid: UUID, authUser: UUID? = nil, authorization: String? = nil) -> RequestBuilder<Article> {
+    open class func articleUuidGetWithRequestBuilder(uuid: UUID, authUser: UUID? = nil, authorization: String? = nil, textonly: Bool? = nil) -> RequestBuilder<Article> {
         var path = "/article/{uuid}"
         let uuidPreEscape = "\(APIHelper.mapValueToPathItem(uuid))"
         let uuidPostEscape = uuidPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -78,7 +80,10 @@ open class ArticlesAPI {
         let URLString = letteraAPI.basePath + path
         let parameters: [String:Any]? = nil
         
-        let url = URLComponents(string: URLString)
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems([
+            "textonly": textonly
+        ])
         let nillableHeaders: [String: Any?] = [
             "AuthUser": authUser,
             "Authorization": authorization
