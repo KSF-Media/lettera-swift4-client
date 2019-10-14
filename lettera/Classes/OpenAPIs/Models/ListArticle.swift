@@ -23,8 +23,9 @@ public struct ListArticle: Codable {
     public var relatedArticles: [RelatedArticle]
     public var articleType: ArticleType
     public var articleTypeDetails: ArticleTypeDetails?
+    public var paper: Paper
 
-    public init(uuid: UUID, title: String, authors: [Author], tags: [String], preamble: String?, listImage: ImageInfo?, premium: Bool, publishingTime: String, updateTime: String?, relatedArticles: [RelatedArticle], articleType: ArticleType, articleTypeDetails: ArticleTypeDetails?) {
+    public init(uuid: UUID, title: String, authors: [Author], tags: [String], preamble: String?, listImage: ImageInfo?, premium: Bool, publishingTime: String, updateTime: String?, relatedArticles: [RelatedArticle], articleType: ArticleType, articleTypeDetails: ArticleTypeDetails?, paper: Paper) {
         self.uuid = uuid
         self.title = title
         self.authors = authors
@@ -37,6 +38,7 @@ public struct ListArticle: Codable {
         self.relatedArticles = relatedArticles
         self.articleType = articleType
         self.articleTypeDetails = articleTypeDetails
+        self.paper = paper
     }
 
 

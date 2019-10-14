@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 # **articleSearchGet**
 ```swift
-    open class func articleSearchGet(start: Int? = nil, limit: Int? = nil, contentQuery: String? = nil, completion: @escaping (_ data: [Article]?, _ error: Error?) -> Void)
+    open class func articleSearchGet(start: Int? = nil, limit: Int? = nil, paper: Paper_articleSearchGet? = nil, contentQuery: String? = nil, completion: @escaping (_ data: [Article]?, _ error: Error?) -> Void)
 ```
 
 
@@ -24,9 +24,10 @@ import lettera
 
 let start = 987 // Int |  (optional)
 let limit = 987 // Int |  (optional)
+let paper = "paper_example" // String |  (optional)
 let contentQuery = "contentQuery_example" // String |  (optional)
 
-ArticlesAPI.articleSearchGet(start: start, limit: limit, contentQuery: contentQuery) { (response, error) in
+ArticlesAPI.articleSearchGet(start: start, limit: limit, paper: paper, contentQuery: contentQuery) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -44,6 +45,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **start** | **Int** |  | [optional] 
  **limit** | **Int** |  | [optional] 
+ **paper** | **String** |  | [optional] 
  **contentQuery** | **String** |  | [optional] 
 
 ### Return type

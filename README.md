@@ -48,6 +48,7 @@ Class | Method | HTTP request | Description
  - [ImageInfo](docs/ImageInfo.md)
  - [ListArticle](docs/ListArticle.md)
  - [Notification](docs/Notification.md)
+ - [Paper](docs/Paper.md)
  - [RelatedArticle](docs/RelatedArticle.md)
 
 

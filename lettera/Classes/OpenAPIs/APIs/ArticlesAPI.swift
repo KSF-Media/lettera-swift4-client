@@ -12,14 +12,25 @@ import Alamofire
 
 open class ArticlesAPI {
     /**
+     * enum for parameter paper
+     */
+    public enum Paper_articleSearchGet: String {
+        case hbl = "hbl"
+        case ht = "ht"
+        case vn = "vn"
+        case on = "on"
+    }
+
+    /**
 
      - parameter start: (query)  (optional)
      - parameter limit: (query)  (optional)
+     - parameter paper: (query)  (optional)
      - parameter contentQuery: (query)  (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func articleSearchGet(start: Int? = nil, limit: Int? = nil, contentQuery: String? = nil, completion: @escaping ((_ data: [Article]?,_ error: Error?) -> Void)) {
-        articleSearchGetWithRequestBuilder(start: start, limit: limit, contentQuery: contentQuery).execute { (response, error) -> Void in
+    open class func articleSearchGet(start: Int? = nil, limit: Int? = nil, paper: Paper_articleSearchGet? = nil, contentQuery: String? = nil, completion: @escaping ((_ data: [Article]?,_ error: Error?) -> Void)) {
+        articleSearchGetWithRequestBuilder(start: start, limit: limit, paper: paper, contentQuery: contentQuery).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -29,10 +40,11 @@ open class ArticlesAPI {
      - Search article by content. It's a freetext search, so the `contentQuery` may be whatever string or sentence to search for.
      - parameter start: (query)  (optional)
      - parameter limit: (query)  (optional)
+     - parameter paper: (query)  (optional)
      - parameter contentQuery: (query)  (optional)
      - returns: RequestBuilder<[Article]> 
      */
-    open class func articleSearchGetWithRequestBuilder(start: Int? = nil, limit: Int? = nil, contentQuery: String? = nil) -> RequestBuilder<[Article]> {
+    open class func articleSearchGetWithRequestBuilder(start: Int? = nil, limit: Int? = nil, paper: Paper_articleSearchGet? = nil, contentQuery: String? = nil) -> RequestBuilder<[Article]> {
         let path = "/article/search"
         let URLString = letteraAPI.basePath + path
         let parameters: [String:Any]? = nil
@@ -41,6 +53,7 @@ open class ArticlesAPI {
         url?.queryItems = APIHelper.mapValuesToQueryItems([
             "start": start?.encodeToJSON(), 
             "limit": limit?.encodeToJSON(), 
+            "paper": paper?.rawValue, 
             "contentQuery": contentQuery
         ])
 
