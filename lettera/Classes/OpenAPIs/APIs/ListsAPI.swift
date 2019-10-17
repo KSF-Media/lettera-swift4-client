@@ -164,4 +164,56 @@ open class ListsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
 
+    /**
+     * enum for parameter paper
+     */
+    public enum Paper_searchGet: String {
+        case hbl = "hbl"
+        case ht = "ht"
+        case vn = "vn"
+        case on = "on"
+    }
+
+    /**
+     Returns a list of search results
+     
+     - parameter start: (query)  (optional)
+     - parameter limit: (query)  (optional)
+     - parameter paper: (query)  (optional)
+     - parameter contentQuery: (query)  (optional)
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func searchGet(start: Int? = nil, limit: Int? = nil, paper: Paper_searchGet? = nil, contentQuery: String? = nil, completion: @escaping ((_ data: [ListArticle]?,_ error: Error?) -> Void)) {
+        searchGetWithRequestBuilder(start: start, limit: limit, paper: paper, contentQuery: contentQuery).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+    /**
+     Returns a list of search results
+     - GET /search
+     - parameter start: (query)  (optional)
+     - parameter limit: (query)  (optional)
+     - parameter paper: (query)  (optional)
+     - parameter contentQuery: (query)  (optional)
+     - returns: RequestBuilder<[ListArticle]> 
+     */
+    open class func searchGetWithRequestBuilder(start: Int? = nil, limit: Int? = nil, paper: Paper_searchGet? = nil, contentQuery: String? = nil) -> RequestBuilder<[ListArticle]> {
+        let path = "/search"
+        let URLString = letteraAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems([
+            "start": start?.encodeToJSON(), 
+            "limit": limit?.encodeToJSON(), 
+            "paper": paper?.rawValue, 
+            "contentQuery": contentQuery
+        ])
+
+        let requestBuilder: RequestBuilder<[ListArticle]>.Type = letteraAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
 }

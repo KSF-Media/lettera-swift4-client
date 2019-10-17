@@ -31,6 +31,7 @@ Class | Method | HTTP request | Description
 *ListsAPI* | [**frontpageGet**](docs/ListsAPI.md#frontpageget) | **GET** /frontpage | Returns a list for a front page
 *ListsAPI* | [**latestGet**](docs/ListsAPI.md#latestget) | **GET** /latest | Returns a list of latest articles
 *ListsAPI* | [**mostreadGet**](docs/ListsAPI.md#mostreadget) | **GET** /mostread | Returns a list of most read articles
+*ListsAPI* | [**searchGet**](docs/ListsAPI.md#searchget) | **GET** /search | Returns a list of search results
 *NotifiersAPI* | [**notifyPost**](docs/NotifiersAPI.md#notifypost) | **POST** /notify | Listens to OC Notifier
 
 
