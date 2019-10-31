@@ -12,11 +12,11 @@ import Foundation
 public struct Notification: Codable {
 
     public var contentType: String
-    public var eventid: Int
+    public var eventid: Int?
     public var eventtype: EventType
     public var uuid: UUID
 
-    public init(contentType: String, eventid: Int, eventtype: EventType, uuid: UUID) {
+    public init(contentType: String, eventid: Int?, eventtype: EventType, uuid: UUID) {
         self.contentType = contentType
         self.eventid = eventid
         self.eventtype = eventtype
