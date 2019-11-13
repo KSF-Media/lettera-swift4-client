@@ -20,6 +20,8 @@ Name | Type | Description | Notes
 **relatedArticles** | [RelatedArticle] |  | 
 **shareUrl** | **String** |  | [optional] 
 **paper** | [**Paper**](Paper.md) |  | 
+**analyticsCategories** | **String** |  | [optional] 
+**analyticsSections** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
