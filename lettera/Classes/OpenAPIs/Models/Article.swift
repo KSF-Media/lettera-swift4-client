@@ -28,10 +28,10 @@ public struct Article: Codable {
     public var relatedArticles: [RelatedArticle]
     public var shareUrl: String?
     public var paper: Paper
-    public var analyticsCategories: String?
-    public var analyticsSections: String?
+    public var analyticsCategory: String?
+    public var analyticsSection: String?
 
-    public init(uuid: UUID, title: String, authors: [Author], tags: [String], preamble: String?, mainImage: ImageInfo?, listImage: ImageInfo?, body: [Block], premium: Bool, publishingTime: String, updateTime: String?, articleType: ArticleType, articleTypeDetails: ArticleTypeDetails?, externalScripts: [String]?, relatedArticles: [RelatedArticle], shareUrl: String?, paper: Paper, analyticsCategories: String?, analyticsSections: String?) {
+    public init(uuid: UUID, title: String, authors: [Author], tags: [String], preamble: String?, mainImage: ImageInfo?, listImage: ImageInfo?, body: [Block], premium: Bool, publishingTime: String, updateTime: String?, articleType: ArticleType, articleTypeDetails: ArticleTypeDetails?, externalScripts: [String]?, relatedArticles: [RelatedArticle], shareUrl: String?, paper: Paper, analyticsCategory: String?, analyticsSection: String?) {
         self.uuid = uuid
         self.title = title
         self.authors = authors
@@ -49,8 +49,8 @@ public struct Article: Codable {
         self.relatedArticles = relatedArticles
         self.shareUrl = shareUrl
         self.paper = paper
-        self.analyticsCategories = analyticsCategories
-        self.analyticsSections = analyticsSections
+        self.analyticsCategory = analyticsCategory
+        self.analyticsSection = analyticsSection
     }
 
 
