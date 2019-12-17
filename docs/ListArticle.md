@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **articleType** | [**ArticleType**](ArticleType.md) |  | 
 **articleTypeDetails** | [**ArticleTypeDetails**](ArticleTypeDetails.md) |  | [optional] 
 **paper** | [**Paper**](Paper.md) |  | 
+**shareUrl** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
