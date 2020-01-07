@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 # **categoriesGet**
 ```swift
-    open class func categoriesGet(completion: @escaping (_ data: [CategoryHierarchy]?, _ error: Error?) -> Void)
+    open class func categoriesGet(paper: Paper_categoriesGet? = nil, completion: @escaping (_ data: [CategoryHierarchy]?, _ error: Error?) -> Void)
 ```
 
 Read categories
@@ -19,9 +19,10 @@ Read categories
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import lettera
 
+let paper = "paper_example" // String |  (optional)
 
 // Read categories
-CategoriesAPI.categoriesGet() { (response, error) in
+CategoriesAPI.categoriesGet(paper: paper) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -34,7 +35,10 @@ CategoriesAPI.categoriesGet() { (response, error) in
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **paper** | **String** |  | [optional] 
 
 ### Return type
 

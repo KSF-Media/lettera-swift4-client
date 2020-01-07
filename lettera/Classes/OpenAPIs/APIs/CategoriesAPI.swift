@@ -12,12 +12,23 @@ import Alamofire
 
 open class CategoriesAPI {
     /**
+     * enum for parameter paper
+     */
+    public enum Paper_categoriesGet: String {
+        case hbl = "hbl"
+        case ht = "ht"
+        case vn = "vn"
+        case on = "on"
+    }
+
+    /**
      Read categories
      
+     - parameter paper: (query)  (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func categoriesGet(completion: @escaping ((_ data: [CategoryHierarchy]?,_ error: Error?) -> Void)) {
-        categoriesGetWithRequestBuilder().execute { (response, error) -> Void in
+    open class func categoriesGet(paper: Paper_categoriesGet? = nil, completion: @escaping ((_ data: [CategoryHierarchy]?,_ error: Error?) -> Void)) {
+        categoriesGetWithRequestBuilder(paper: paper).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -25,14 +36,18 @@ open class CategoriesAPI {
     /**
      Read categories
      - GET /categories
+     - parameter paper: (query)  (optional)
      - returns: RequestBuilder<[CategoryHierarchy]> 
      */
-    open class func categoriesGetWithRequestBuilder() -> RequestBuilder<[CategoryHierarchy]> {
+    open class func categoriesGetWithRequestBuilder(paper: Paper_categoriesGet? = nil) -> RequestBuilder<[CategoryHierarchy]> {
         let path = "/categories"
         let URLString = letteraAPI.basePath + path
         let parameters: [String:Any]? = nil
         
-        let url = URLComponents(string: URLString)
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems([
+            "paper": paper?.rawValue
+        ])
 
         let requestBuilder: RequestBuilder<[CategoryHierarchy]>.Type = letteraAPI.requestBuilderFactory.getBuilder()
 
