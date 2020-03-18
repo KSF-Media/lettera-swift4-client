@@ -16,14 +16,18 @@ public struct Block: Codable {
     public var image: ImageInfo?
     public var factBox: FactInfo?
     public var headline: String?
+    public var footnote: String?
+    public var question: String?
     public var quote: String?
 
-    public init(paragraph: String?, html: String?, image: ImageInfo?, factBox: FactInfo?, headline: String?, quote: String?) {
+    public init(paragraph: String?, html: String?, image: ImageInfo?, factBox: FactInfo?, headline: String?, footnote: String?, question: String?, quote: String?) {
         self.paragraph = paragraph
         self.html = html
         self.image = image
         self.factBox = factBox
         self.headline = headline
+        self.footnote = footnote
+        self.question = question
         self.quote = quote
     }
 
