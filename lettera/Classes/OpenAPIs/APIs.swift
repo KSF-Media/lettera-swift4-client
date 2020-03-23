@@ -7,7 +7,7 @@
 import Foundation
 
 open class letteraAPI {
-    public static var basePath = "http://http:/v1"
+    public static var basePath = "http://http:/v2"
     public static var credential: URLCredential?
     public static var customHeaders: [String:String] = [:]
     public static var requestBuilderFactory: RequestBuilderFactory = AlamofireRequestBuilderFactory()

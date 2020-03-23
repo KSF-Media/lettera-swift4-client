@@ -1,6 +1,6 @@
 # CategoriesAPI
 
-All URIs are relative to *http://http:/v1*
+All URIs are relative to *http://http:/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 # **categoriesGet**
 ```swift
-    open class func categoriesGet(paper: Paper_categoriesGet? = nil, completion: @escaping (_ data: [Any]?, _ error: Error?) -> Void)
+    open class func categoriesGet(paper: Paper_categoriesGet? = nil, completion: @escaping (_ data: [Category]?, _ error: Error?) -> Void)
 ```
 
 Read categories
@@ -42,7 +42,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**[Any]**
+[**[Category]**](Category.md)
 
 ### Authorization
 
