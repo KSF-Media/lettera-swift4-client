@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 # **categoriesGet**
 ```swift
-    open class func categoriesGet(paper: Paper_categoriesGet? = nil, completion: @escaping (_ data: [CategoryHierarchy]?, _ error: Error?) -> Void)
+    open class func categoriesGet(paper: Paper_categoriesGet? = nil, completion: @escaping (_ data: [Any]?, _ error: Error?) -> Void)
 ```
 
 Read categories
@@ -42,7 +42,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[CategoryHierarchy]**](CategoryHierarchy.md)
+**[Any]**
 
 ### Authorization
 

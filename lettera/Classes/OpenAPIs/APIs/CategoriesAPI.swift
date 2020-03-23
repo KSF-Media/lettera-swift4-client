@@ -27,7 +27,7 @@ open class CategoriesAPI {
      - parameter paper: (query)  (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func categoriesGet(paper: Paper_categoriesGet? = nil, completion: @escaping ((_ data: [CategoryHierarchy]?,_ error: Error?) -> Void)) {
+    open class func categoriesGet(paper: Paper_categoriesGet? = nil, completion: @escaping ((_ data: [Any]?,_ error: Error?) -> Void)) {
         categoriesGetWithRequestBuilder(paper: paper).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -37,9 +37,9 @@ open class CategoriesAPI {
      Read categories
      - GET /categories
      - parameter paper: (query)  (optional)
-     - returns: RequestBuilder<[CategoryHierarchy]> 
+     - returns: RequestBuilder<[Any]> 
      */
-    open class func categoriesGetWithRequestBuilder(paper: Paper_categoriesGet? = nil) -> RequestBuilder<[CategoryHierarchy]> {
+    open class func categoriesGetWithRequestBuilder(paper: Paper_categoriesGet? = nil) -> RequestBuilder<[Any]> {
         let path = "/categories"
         let URLString = letteraAPI.basePath + path
         let parameters: [String:Any]? = nil
@@ -49,7 +49,7 @@ open class CategoriesAPI {
             "paper": paper?.rawValue
         ])
 
-        let requestBuilder: RequestBuilder<[CategoryHierarchy]>.Type = letteraAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<[Any]>.Type = letteraAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
