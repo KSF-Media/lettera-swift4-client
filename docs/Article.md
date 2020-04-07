@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **paper** | [**Paper**](Paper.md) |  | 
 **analyticsCategory** | **String** |  | [optional] 
 **analyticsSection** | **String** |  | [optional] 
+**articlePriority** | **Int** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
