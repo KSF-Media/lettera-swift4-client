@@ -18,8 +18,9 @@ public struct RelatedArticle: Codable {
     public var publishingTime: String
     public var premium: Bool
     public var tags: [String]
+    public var articleTypeDetails: ArticleTypeDetails?
 
-    public init(uuid: UUID, title: String, preamble: String?, listImage: ImageInfo?, publishingTime: String, premium: Bool, tags: [String]) {
+    public init(uuid: UUID, title: String, preamble: String?, listImage: ImageInfo?, publishingTime: String, premium: Bool, tags: [String], articleTypeDetails: ArticleTypeDetails?) {
         self.uuid = uuid
         self.title = title
         self.preamble = preamble
@@ -27,6 +28,7 @@ public struct RelatedArticle: Codable {
         self.publishingTime = publishingTime
         self.premium = premium
         self.tags = tags
+        self.articleTypeDetails = articleTypeDetails
     }
 
 
