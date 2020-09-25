@@ -129,10 +129,11 @@ open class ListsAPI {
      - parameter limit: (query)  (optional)
      - parameter category: (query)  (optional)
      - parameter paper: (query)  (optional)
+     - parameter onlySubscribers: (query)  (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func mostreadGet(start: Int? = nil, limit: Int? = nil, category: String? = nil, paper: Paper_mostreadGet? = nil, completion: @escaping ((_ data: [ListArticle]?,_ error: Error?) -> Void)) {
-        mostreadGetWithRequestBuilder(start: start, limit: limit, category: category, paper: paper).execute { (response, error) -> Void in
+    open class func mostreadGet(start: Int? = nil, limit: Int? = nil, category: String? = nil, paper: Paper_mostreadGet? = nil, onlySubscribers: Bool? = nil, completion: @escaping ((_ data: [ListArticle]?,_ error: Error?) -> Void)) {
+        mostreadGetWithRequestBuilder(start: start, limit: limit, category: category, paper: paper, onlySubscribers: onlySubscribers).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -144,9 +145,10 @@ open class ListsAPI {
      - parameter limit: (query)  (optional)
      - parameter category: (query)  (optional)
      - parameter paper: (query)  (optional)
+     - parameter onlySubscribers: (query)  (optional)
      - returns: RequestBuilder<[ListArticle]> 
      */
-    open class func mostreadGetWithRequestBuilder(start: Int? = nil, limit: Int? = nil, category: String? = nil, paper: Paper_mostreadGet? = nil) -> RequestBuilder<[ListArticle]> {
+    open class func mostreadGetWithRequestBuilder(start: Int? = nil, limit: Int? = nil, category: String? = nil, paper: Paper_mostreadGet? = nil, onlySubscribers: Bool? = nil) -> RequestBuilder<[ListArticle]> {
         let path = "/mostread"
         let URLString = letteraAPI.basePath + path
         let parameters: [String:Any]? = nil
@@ -156,7 +158,8 @@ open class ListsAPI {
             "start": start?.encodeToJSON(), 
             "limit": limit?.encodeToJSON(), 
             "category": category, 
-            "paper": paper?.rawValue
+            "paper": paper?.rawValue, 
+            "onlySubscribers": onlySubscribers
         ])
 
         let requestBuilder: RequestBuilder<[ListArticle]>.Type = letteraAPI.requestBuilderFactory.getBuilder()
