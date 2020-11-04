@@ -12,57 +12,6 @@ import Alamofire
 
 open class ArticlesAPI {
     /**
-     * enum for parameter paper
-     */
-    public enum Paper_articleSearchGet: String {
-        case hbl = "hbl"
-        case ht = "ht"
-        case vn = "vn"
-        case on = "on"
-    }
-
-    /**
-
-     - parameter start: (query)  (optional)
-     - parameter limit: (query)  (optional)
-     - parameter paper: (query)  (optional)
-     - parameter contentQuery: (query)  (optional)
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    open class func articleSearchGet(start: Int? = nil, limit: Int? = nil, paper: Paper_articleSearchGet? = nil, contentQuery: String? = nil, completion: @escaping ((_ data: [Article]?,_ error: Error?) -> Void)) {
-        articleSearchGetWithRequestBuilder(start: start, limit: limit, paper: paper, contentQuery: contentQuery).execute { (response, error) -> Void in
-            completion(response?.body, error)
-        }
-    }
-
-    /**
-     - GET /article/search
-     - Search article by content. It's a freetext search, so the `contentQuery` may be whatever string or sentence to search for.
-     - parameter start: (query)  (optional)
-     - parameter limit: (query)  (optional)
-     - parameter paper: (query)  (optional)
-     - parameter contentQuery: (query)  (optional)
-     - returns: RequestBuilder<[Article]> 
-     */
-    open class func articleSearchGetWithRequestBuilder(start: Int? = nil, limit: Int? = nil, paper: Paper_articleSearchGet? = nil, contentQuery: String? = nil) -> RequestBuilder<[Article]> {
-        let path = "/article/search"
-        let URLString = letteraAPI.basePath + path
-        let parameters: [String:Any]? = nil
-        
-        var url = URLComponents(string: URLString)
-        url?.queryItems = APIHelper.mapValuesToQueryItems([
-            "start": start?.encodeToJSON(), 
-            "limit": limit?.encodeToJSON(), 
-            "paper": paper?.rawValue, 
-            "contentQuery": contentQuery
-        ])
-
-        let requestBuilder: RequestBuilder<[Article]>.Type = letteraAPI.requestBuilderFactory.getBuilder()
-
-        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
-    }
-
-    /**
 
      - parameter uuid: (path)  
      - parameter authUser: (header)  (optional)
@@ -78,7 +27,7 @@ open class ArticlesAPI {
 
     /**
      - GET /article/{uuid}
-     - Fetch article by UUID.   Notes about the images:   The image URLs point to our image scaler, and are returned without no scaling parameters.  However, if wanted, `width` and `height` parameters can be added to the querystring of the URL.  Also in list views, to ensure same size, it might be useful to crop the images by using the parameter `function=hardcrop`
+     - Fetch article by UUID.   Notes about the images:   The image URLs point to our image scaler, and are returned without scaling parameters.  However, if wanted, `width` and `height` parameters can be added to the querystring of the URL.  Also in list views, to ensure same size, it might be useful to crop the images by using the parameter `function=hardcrop`
      - parameter uuid: (path)  
      - parameter authUser: (header)  (optional)
      - parameter authorization: (header)  (optional)
@@ -104,6 +53,47 @@ open class ArticlesAPI {
         let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
 
         let requestBuilder: RequestBuilder<Article>.Type = letteraAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false, headers: headerParameters)
+    }
+
+    /**
+
+     - parameter uuid: (path)  
+     - parameter authUser: (header)  (optional)
+     - parameter authorization: (header)  (optional)
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func articleUuidStubGet(uuid: UUID, authUser: UUID? = nil, authorization: String? = nil, completion: @escaping ((_ data: ArticleStub?,_ error: Error?) -> Void)) {
+        articleUuidStubGetWithRequestBuilder(uuid: uuid, authUser: authUser, authorization: authorization).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+    /**
+     - GET /article/{uuid}/stub
+     - Fetch an article stub by UUID
+     - parameter uuid: (path)  
+     - parameter authUser: (header)  (optional)
+     - parameter authorization: (header)  (optional)
+     - returns: RequestBuilder<ArticleStub> 
+     */
+    open class func articleUuidStubGetWithRequestBuilder(uuid: UUID, authUser: UUID? = nil, authorization: String? = nil) -> RequestBuilder<ArticleStub> {
+        var path = "/article/{uuid}/stub"
+        let uuidPreEscape = "\(APIHelper.mapValueToPathItem(uuid))"
+        let uuidPostEscape = uuidPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{uuid}", with: uuidPostEscape, options: .literal, range: nil)
+        let URLString = letteraAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        let url = URLComponents(string: URLString)
+        let nillableHeaders: [String: Any?] = [
+            "AuthUser": authUser,
+            "Authorization": authorization
+        ]
+        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+
+        let requestBuilder: RequestBuilder<ArticleStub>.Type = letteraAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false, headers: headerParameters)
     }

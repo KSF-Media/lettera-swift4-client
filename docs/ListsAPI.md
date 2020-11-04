@@ -1,6 +1,6 @@
 # ListsAPI
 
-All URIs are relative to *http://http:/v2*
+All URIs are relative to *http://http:/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 # **frontpageGet**
 ```swift
-    open class func frontpageGet(start: Int? = nil, limit: Int? = nil, category: String? = nil, paper: Paper_frontpageGet? = nil, completion: @escaping (_ data: [ListArticle]?, _ error: Error?) -> Void)
+    open class func frontpageGet(start: Int? = nil, limit: Int? = nil, category: String? = nil, paper: Paper_frontpageGet? = nil, completion: @escaping (_ data: [ArticleStub]?, _ error: Error?) -> Void)
 ```
 
 Returns a list for a front page
@@ -51,7 +51,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[ListArticle]**](ListArticle.md)
+[**[ArticleStub]**](ArticleStub.md)
 
 ### Authorization
 
@@ -66,7 +66,7 @@ No authorization required
 
 # **latestGet**
 ```swift
-    open class func latestGet(start: Int? = nil, limit: Int? = nil, paper: Paper_latestGet? = nil, completion: @escaping (_ data: [ListArticle]?, _ error: Error?) -> Void)
+    open class func latestGet(start: Int? = nil, limit: Int? = nil, paper: Paper_latestGet? = nil, completion: @escaping (_ data: [ArticleStub]?, _ error: Error?) -> Void)
 ```
 
 Returns a list of latest articles
@@ -103,7 +103,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[ListArticle]**](ListArticle.md)
+[**[ArticleStub]**](ArticleStub.md)
 
 ### Authorization
 
@@ -118,7 +118,7 @@ No authorization required
 
 # **mostreadGet**
 ```swift
-    open class func mostreadGet(start: Int? = nil, limit: Int? = nil, category: String? = nil, paper: Paper_mostreadGet? = nil, onlySubscribers: Bool? = nil, completion: @escaping (_ data: [ListArticle]?, _ error: Error?) -> Void)
+    open class func mostreadGet(start: Int? = nil, limit: Int? = nil, category: String? = nil, paper: Paper_mostreadGet? = nil, onlySubscribers: Bool? = nil, completion: @escaping (_ data: [ArticleStub]?, _ error: Error?) -> Void)
 ```
 
 Returns a list of most read articles
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[ListArticle]**](ListArticle.md)
+[**[ArticleStub]**](ArticleStub.md)
 
 ### Authorization
 
@@ -174,7 +174,7 @@ No authorization required
 
 # **searchGet**
 ```swift
-    open class func searchGet(start: Int? = nil, limit: Int? = nil, paper: Paper_searchGet? = nil, contentQuery: String? = nil, completion: @escaping (_ data: [ListArticle]?, _ error: Error?) -> Void)
+    open class func searchGet(start: Int? = nil, limit: Int? = nil, paper: Paper_searchGet? = nil, contentQuery: String? = nil, completion: @escaping (_ data: [ArticleStub]?, _ error: Error?) -> Void)
 ```
 
 Returns a list of search results
@@ -213,7 +213,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[ListArticle]**](ListArticle.md)
+[**[ArticleStub]**](ArticleStub.md)
 
 ### Authorization
 

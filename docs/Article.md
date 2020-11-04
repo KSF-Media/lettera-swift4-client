@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **articleType** | [**ArticleType**](ArticleType.md) |  | 
 **articleTypeDetails** | [**ArticleTypeDetails**](ArticleTypeDetails.md) |  | [optional] 
 **externalScripts** | **[String]** |  | [optional] 
-**relatedArticles** | [RelatedArticle] |  | 
+**relatedArticles** | [ArticleStub] |  | 
 **shareUrl** | **String** |  | [optional] 
 **paper** | [**Paper**](Paper.md) |  | 
 **analyticsCategory** | **String** |  | [optional] 

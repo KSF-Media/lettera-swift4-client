@@ -30,7 +30,7 @@ open class ListsAPI {
      - parameter paper: (query)  (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func frontpageGet(start: Int? = nil, limit: Int? = nil, category: String? = nil, paper: Paper_frontpageGet? = nil, completion: @escaping ((_ data: [ListArticle]?,_ error: Error?) -> Void)) {
+    open class func frontpageGet(start: Int? = nil, limit: Int? = nil, category: String? = nil, paper: Paper_frontpageGet? = nil, completion: @escaping ((_ data: [ArticleStub]?,_ error: Error?) -> Void)) {
         frontpageGetWithRequestBuilder(start: start, limit: limit, category: category, paper: paper).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -43,9 +43,9 @@ open class ListsAPI {
      - parameter limit: (query)  (optional)
      - parameter category: (query)  (optional)
      - parameter paper: (query)  (optional)
-     - returns: RequestBuilder<[ListArticle]> 
+     - returns: RequestBuilder<[ArticleStub]> 
      */
-    open class func frontpageGetWithRequestBuilder(start: Int? = nil, limit: Int? = nil, category: String? = nil, paper: Paper_frontpageGet? = nil) -> RequestBuilder<[ListArticle]> {
+    open class func frontpageGetWithRequestBuilder(start: Int? = nil, limit: Int? = nil, category: String? = nil, paper: Paper_frontpageGet? = nil) -> RequestBuilder<[ArticleStub]> {
         let path = "/frontpage"
         let URLString = letteraAPI.basePath + path
         let parameters: [String:Any]? = nil
@@ -58,7 +58,7 @@ open class ListsAPI {
             "paper": paper?.rawValue
         ])
 
-        let requestBuilder: RequestBuilder<[ListArticle]>.Type = letteraAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<[ArticleStub]>.Type = letteraAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -81,7 +81,7 @@ open class ListsAPI {
      - parameter paper: (query)  (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func latestGet(start: Int? = nil, limit: Int? = nil, paper: Paper_latestGet? = nil, completion: @escaping ((_ data: [ListArticle]?,_ error: Error?) -> Void)) {
+    open class func latestGet(start: Int? = nil, limit: Int? = nil, paper: Paper_latestGet? = nil, completion: @escaping ((_ data: [ArticleStub]?,_ error: Error?) -> Void)) {
         latestGetWithRequestBuilder(start: start, limit: limit, paper: paper).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -93,9 +93,9 @@ open class ListsAPI {
      - parameter start: (query)  (optional)
      - parameter limit: (query)  (optional)
      - parameter paper: (query)  (optional)
-     - returns: RequestBuilder<[ListArticle]> 
+     - returns: RequestBuilder<[ArticleStub]> 
      */
-    open class func latestGetWithRequestBuilder(start: Int? = nil, limit: Int? = nil, paper: Paper_latestGet? = nil) -> RequestBuilder<[ListArticle]> {
+    open class func latestGetWithRequestBuilder(start: Int? = nil, limit: Int? = nil, paper: Paper_latestGet? = nil) -> RequestBuilder<[ArticleStub]> {
         let path = "/latest"
         let URLString = letteraAPI.basePath + path
         let parameters: [String:Any]? = nil
@@ -107,7 +107,7 @@ open class ListsAPI {
             "paper": paper?.rawValue
         ])
 
-        let requestBuilder: RequestBuilder<[ListArticle]>.Type = letteraAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<[ArticleStub]>.Type = letteraAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -132,7 +132,7 @@ open class ListsAPI {
      - parameter onlySubscribers: (query)  (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func mostreadGet(start: Int? = nil, limit: Int? = nil, category: String? = nil, paper: Paper_mostreadGet? = nil, onlySubscribers: Bool? = nil, completion: @escaping ((_ data: [ListArticle]?,_ error: Error?) -> Void)) {
+    open class func mostreadGet(start: Int? = nil, limit: Int? = nil, category: String? = nil, paper: Paper_mostreadGet? = nil, onlySubscribers: Bool? = nil, completion: @escaping ((_ data: [ArticleStub]?,_ error: Error?) -> Void)) {
         mostreadGetWithRequestBuilder(start: start, limit: limit, category: category, paper: paper, onlySubscribers: onlySubscribers).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -146,9 +146,9 @@ open class ListsAPI {
      - parameter category: (query)  (optional)
      - parameter paper: (query)  (optional)
      - parameter onlySubscribers: (query)  (optional)
-     - returns: RequestBuilder<[ListArticle]> 
+     - returns: RequestBuilder<[ArticleStub]> 
      */
-    open class func mostreadGetWithRequestBuilder(start: Int? = nil, limit: Int? = nil, category: String? = nil, paper: Paper_mostreadGet? = nil, onlySubscribers: Bool? = nil) -> RequestBuilder<[ListArticle]> {
+    open class func mostreadGetWithRequestBuilder(start: Int? = nil, limit: Int? = nil, category: String? = nil, paper: Paper_mostreadGet? = nil, onlySubscribers: Bool? = nil) -> RequestBuilder<[ArticleStub]> {
         let path = "/mostread"
         let URLString = letteraAPI.basePath + path
         let parameters: [String:Any]? = nil
@@ -162,7 +162,7 @@ open class ListsAPI {
             "onlySubscribers": onlySubscribers
         ])
 
-        let requestBuilder: RequestBuilder<[ListArticle]>.Type = letteraAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<[ArticleStub]>.Type = letteraAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -186,7 +186,7 @@ open class ListsAPI {
      - parameter contentQuery: (query)  (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func searchGet(start: Int? = nil, limit: Int? = nil, paper: Paper_searchGet? = nil, contentQuery: String? = nil, completion: @escaping ((_ data: [ListArticle]?,_ error: Error?) -> Void)) {
+    open class func searchGet(start: Int? = nil, limit: Int? = nil, paper: Paper_searchGet? = nil, contentQuery: String? = nil, completion: @escaping ((_ data: [ArticleStub]?,_ error: Error?) -> Void)) {
         searchGetWithRequestBuilder(start: start, limit: limit, paper: paper, contentQuery: contentQuery).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -199,9 +199,9 @@ open class ListsAPI {
      - parameter limit: (query)  (optional)
      - parameter paper: (query)  (optional)
      - parameter contentQuery: (query)  (optional)
-     - returns: RequestBuilder<[ListArticle]> 
+     - returns: RequestBuilder<[ArticleStub]> 
      */
-    open class func searchGetWithRequestBuilder(start: Int? = nil, limit: Int? = nil, paper: Paper_searchGet? = nil, contentQuery: String? = nil) -> RequestBuilder<[ListArticle]> {
+    open class func searchGetWithRequestBuilder(start: Int? = nil, limit: Int? = nil, paper: Paper_searchGet? = nil, contentQuery: String? = nil) -> RequestBuilder<[ArticleStub]> {
         let path = "/search"
         let URLString = letteraAPI.basePath + path
         let parameters: [String:Any]? = nil
@@ -214,7 +214,7 @@ open class ListsAPI {
             "contentQuery": contentQuery
         ])
 
-        let requestBuilder: RequestBuilder<[ListArticle]>.Type = letteraAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<[ArticleStub]>.Type = letteraAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }

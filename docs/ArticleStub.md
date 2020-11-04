@@ -1,4 +1,4 @@
-# ListArticle
+# ArticleStub
 
 ## Properties
 Name | Type | Description | Notes
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **premium** | **Bool** |  | 
 **publishingTime** | **String** |  | 
 **updateTime** | **String** |  | [optional] 
-**relatedArticles** | [RelatedArticle] |  | 
+**relatedArticles** | [ArticleStub] |  | [optional] 
 **articleType** | [**ArticleType**](ArticleType.md) |  | 
 **articleTypeDetails** | [**ArticleTypeDetails**](ArticleTypeDetails.md) |  | [optional] 
 **paper** | [**Paper**](Paper.md) |  | 
