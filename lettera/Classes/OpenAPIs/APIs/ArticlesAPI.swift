@@ -60,12 +60,10 @@ open class ArticlesAPI {
     /**
 
      - parameter uuid: (path)  
-     - parameter authUser: (header)  (optional)
-     - parameter authorization: (header)  (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func articleUuidStubGet(uuid: UUID, authUser: UUID? = nil, authorization: String? = nil, completion: @escaping ((_ data: ArticleStub?,_ error: Error?) -> Void)) {
-        articleUuidStubGetWithRequestBuilder(uuid: uuid, authUser: authUser, authorization: authorization).execute { (response, error) -> Void in
+    open class func articleUuidStubGet(uuid: UUID, completion: @escaping ((_ data: ArticleStub?,_ error: Error?) -> Void)) {
+        articleUuidStubGetWithRequestBuilder(uuid: uuid).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -74,11 +72,9 @@ open class ArticlesAPI {
      - GET /article/{uuid}/stub
      - Fetch an article stub by UUID
      - parameter uuid: (path)  
-     - parameter authUser: (header)  (optional)
-     - parameter authorization: (header)  (optional)
      - returns: RequestBuilder<ArticleStub> 
      */
-    open class func articleUuidStubGetWithRequestBuilder(uuid: UUID, authUser: UUID? = nil, authorization: String? = nil) -> RequestBuilder<ArticleStub> {
+    open class func articleUuidStubGetWithRequestBuilder(uuid: UUID) -> RequestBuilder<ArticleStub> {
         var path = "/article/{uuid}/stub"
         let uuidPreEscape = "\(APIHelper.mapValueToPathItem(uuid))"
         let uuidPostEscape = uuidPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -87,15 +83,10 @@ open class ArticlesAPI {
         let parameters: [String:Any]? = nil
         
         let url = URLComponents(string: URLString)
-        let nillableHeaders: [String: Any?] = [
-            "AuthUser": authUser,
-            "Authorization": authorization
-        ]
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
 
         let requestBuilder: RequestBuilder<ArticleStub>.Type = letteraAPI.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false, headers: headerParameters)
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
 
 }

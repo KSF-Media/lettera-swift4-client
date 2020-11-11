@@ -65,7 +65,7 @@ No authorization required
 
 # **articleUuidStubGet**
 ```swift
-    open class func articleUuidStubGet(uuid: UUID, authUser: UUID? = nil, authorization: String? = nil, completion: @escaping (_ data: ArticleStub?, _ error: Error?) -> Void)
+    open class func articleUuidStubGet(uuid: UUID, completion: @escaping (_ data: ArticleStub?, _ error: Error?) -> Void)
 ```
 
 
@@ -78,10 +78,8 @@ Fetch an article stub by UUID
 import lettera
 
 let uuid = 987 // UUID | 
-let authUser = 987 // UUID |  (optional)
-let authorization = "authorization_example" // String |  (optional)
 
-ArticlesAPI.articleUuidStubGet(uuid: uuid, authUser: authUser, authorization: authorization) { (response, error) in
+ArticlesAPI.articleUuidStubGet(uuid: uuid) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -98,8 +96,6 @@ ArticlesAPI.articleUuidStubGet(uuid: uuid, authUser: authUser, authorization: au
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **uuid** | [**UUID**](.md) |  | 
- **authUser** | [**UUID**](.md) |  | [optional] 
- **authorization** | **String** |  | [optional] 
 
 ### Return type
 
