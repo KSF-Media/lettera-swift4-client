@@ -26,8 +26,9 @@ public struct ArticleStub: Codable {
     public var paper: Paper
     public var shareUrl: String?
     public var liveReporting: Bool
+    public var articlePriority: Int?
 
-    public init(uuid: UUID, title: String, authors: [Author], tags: [String], preamble: String?, listImage: ImageInfo?, premium: Bool, publishingTime: String, updateTime: String?, relatedArticles: [ArticleStub]?, articleType: ArticleType, articleTypeDetails: ArticleTypeDetails?, paper: Paper, shareUrl: String?, liveReporting: Bool) {
+    public init(uuid: UUID, title: String, authors: [Author], tags: [String], preamble: String?, listImage: ImageInfo?, premium: Bool, publishingTime: String, updateTime: String?, relatedArticles: [ArticleStub]?, articleType: ArticleType, articleTypeDetails: ArticleTypeDetails?, paper: Paper, shareUrl: String?, liveReporting: Bool, articlePriority: Int?) {
         self.uuid = uuid
         self.title = title
         self.authors = authors
@@ -43,6 +44,7 @@ public struct ArticleStub: Codable {
         self.paper = paper
         self.shareUrl = shareUrl
         self.liveReporting = liveReporting
+        self.articlePriority = articlePriority
     }
 
 
