@@ -32,8 +32,9 @@ public struct Article: Codable {
     public var analyticsCategory: String?
     public var analyticsSection: String?
     public var articlePriority: Int?
+    public var articleTimeOnSite: Int?
 
-    public init(uuid: UUID, title: String, listTitle: String?, authors: [Author], tags: [String], preamble: String?, mainImage: ImageInfo?, listImage: ImageInfo?, body: [Block], premium: Bool, publishingTime: String, updateTime: String?, articleType: ArticleType, articleTypeDetails: ArticleTypeDetails?, externalScripts: [String]?, relatedArticles: [ArticleStub], shareUrl: String?, paper: Paper, analyticsCategory: String?, analyticsSection: String?, articlePriority: Int?) {
+    public init(uuid: UUID, title: String, listTitle: String?, authors: [Author], tags: [String], preamble: String?, mainImage: ImageInfo?, listImage: ImageInfo?, body: [Block], premium: Bool, publishingTime: String, updateTime: String?, articleType: ArticleType, articleTypeDetails: ArticleTypeDetails?, externalScripts: [String]?, relatedArticles: [ArticleStub], shareUrl: String?, paper: Paper, analyticsCategory: String?, analyticsSection: String?, articlePriority: Int?, articleTimeOnSite: Int?) {
         self.uuid = uuid
         self.title = title
         self.listTitle = listTitle
@@ -55,6 +56,7 @@ public struct Article: Codable {
         self.analyticsCategory = analyticsCategory
         self.analyticsSection = analyticsSection
         self.articlePriority = articlePriority
+        self.articleTimeOnSite = articleTimeOnSite
     }
 
 
