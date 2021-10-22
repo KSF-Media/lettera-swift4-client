@@ -13,10 +13,12 @@ public struct Author: Codable {
 
     public var byline: String
     public var image: String?
+    public var email: String?
 
-    public init(byline: String, image: String?) {
+    public init(byline: String, image: String?, email: String?) {
         self.byline = byline
         self.image = image
+        self.email = email
     }
 
 
