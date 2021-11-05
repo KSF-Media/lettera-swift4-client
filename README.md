@@ -36,6 +36,7 @@ Class | Method | HTTP request | Description
 *ListsAPI* | [**scoredPost**](docs/ListsAPI.md#scoredpost) | **POST** /scored | List recent articles sorted by given scoring weights
 *ListsAPI* | [**scoredPresetGet**](docs/ListsAPI.md#scoredpresetget) | **GET** /scored/{preset} | List recent articles sorted by preset scoring
 *ListsAPI* | [**searchGet**](docs/ListsAPI.md#searchget) | **GET** /search | Returns a list of search results
+*ListsAPI* | [**tagTagGet**](docs/ListsAPI.md#tagtagget) | **GET** /tag/{tag} | Returns a list of latest articles by tag
 *NotifiersAPI* | [**notifyPost**](docs/NotifiersAPI.md#notifypost) | **POST** /notify | Listens to OC Notifier
 
 

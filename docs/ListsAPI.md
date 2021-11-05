@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**scoredPost**](ListsAPI.md#scoredpost) | **POST** /scored | List recent articles sorted by given scoring weights
 [**scoredPresetGet**](ListsAPI.md#scoredpresetget) | **GET** /scored/{preset} | List recent articles sorted by preset scoring
 [**searchGet**](ListsAPI.md#searchget) | **GET** /search | Returns a list of search results
+[**tagTagGet**](ListsAPI.md#tagtagget) | **GET** /tag/{tag} | Returns a list of latest articles by tag
 
 
 # **frontpageGet**
@@ -436,6 +437,60 @@ Name | Type | Description  | Notes
  **limit** | **Int** |  | [optional] 
  **paper** | **String** |  | [optional] 
  **contentQuery** | **String** |  | [optional] 
+
+### Return type
+
+[**[ArticleStub]**](ArticleStub.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json;charset=utf-8
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **tagTagGet**
+```swift
+    open class func tagTagGet(tag: String, start: Int? = nil, limit: Int? = nil, paper: Paper_tagTagGet? = nil, completion: @escaping (_ data: [ArticleStub]?, _ error: Error?) -> Void)
+```
+
+Returns a list of latest articles by tag
+
+### Example 
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import lettera
+
+let tag = "tag_example" // String | 
+let start = 987 // Int |  (optional)
+let limit = 987 // Int |  (optional)
+let paper = "paper_example" // String |  (optional)
+
+// Returns a list of latest articles by tag
+ListsAPI.tagTagGet(tag: tag, start: start, limit: limit, paper: paper) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tag** | **String** |  | 
+ **start** | **Int** |  | [optional] 
+ **limit** | **Int** |  | [optional] 
+ **paper** | **String** |  | [optional] 
 
 ### Return type
 

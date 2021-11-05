@@ -433,4 +433,58 @@ open class ListsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
 
+    /**
+     * enum for parameter paper
+     */
+    public enum Paper_tagTagGet: String {
+        case hbl = "hbl"
+        case ht = "ht"
+        case vn = "vn"
+        case on = "on"
+    }
+
+    /**
+     Returns a list of latest articles by tag
+     
+     - parameter tag: (path)  
+     - parameter start: (query)  (optional)
+     - parameter limit: (query)  (optional)
+     - parameter paper: (query)  (optional)
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func tagTagGet(tag: String, start: Int? = nil, limit: Int? = nil, paper: Paper_tagTagGet? = nil, completion: @escaping ((_ data: [ArticleStub]?,_ error: Error?) -> Void)) {
+        tagTagGetWithRequestBuilder(tag: tag, start: start, limit: limit, paper: paper).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+    /**
+     Returns a list of latest articles by tag
+     - GET /tag/{tag}
+     - parameter tag: (path)  
+     - parameter start: (query)  (optional)
+     - parameter limit: (query)  (optional)
+     - parameter paper: (query)  (optional)
+     - returns: RequestBuilder<[ArticleStub]> 
+     */
+    open class func tagTagGetWithRequestBuilder(tag: String, start: Int? = nil, limit: Int? = nil, paper: Paper_tagTagGet? = nil) -> RequestBuilder<[ArticleStub]> {
+        var path = "/tag/{tag}"
+        let tagPreEscape = "\(APIHelper.mapValueToPathItem(tag))"
+        let tagPostEscape = tagPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{tag}", with: tagPostEscape, options: .literal, range: nil)
+        let URLString = letteraAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems([
+            "start": start?.encodeToJSON(), 
+            "limit": limit?.encodeToJSON(), 
+            "paper": paper?.rawValue
+        ])
+
+        let requestBuilder: RequestBuilder<[ArticleStub]>.Type = letteraAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
 }
