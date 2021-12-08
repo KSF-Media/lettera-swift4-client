@@ -16,11 +16,12 @@ open class ArticlesAPI {
      - parameter uuid: (path)  
      - parameter authUser: (header)  (optional)
      - parameter authorization: (header)  (optional)
+     - parameter xRealIp: (header)  (optional)
      - parameter textonly: (query)  (optional, default to false)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func articleUuidGet(uuid: UUID, authUser: UUID? = nil, authorization: String? = nil, textonly: Bool? = nil, completion: @escaping ((_ data: Article?,_ error: Error?) -> Void)) {
-        articleUuidGetWithRequestBuilder(uuid: uuid, authUser: authUser, authorization: authorization, textonly: textonly).execute { (response, error) -> Void in
+    open class func articleUuidGet(uuid: UUID, authUser: UUID? = nil, authorization: String? = nil, xRealIp: String? = nil, textonly: Bool? = nil, completion: @escaping ((_ data: Article?,_ error: Error?) -> Void)) {
+        articleUuidGetWithRequestBuilder(uuid: uuid, authUser: authUser, authorization: authorization, xRealIp: xRealIp, textonly: textonly).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -31,10 +32,11 @@ open class ArticlesAPI {
      - parameter uuid: (path)  
      - parameter authUser: (header)  (optional)
      - parameter authorization: (header)  (optional)
+     - parameter xRealIp: (header)  (optional)
      - parameter textonly: (query)  (optional, default to false)
      - returns: RequestBuilder<Article> 
      */
-    open class func articleUuidGetWithRequestBuilder(uuid: UUID, authUser: UUID? = nil, authorization: String? = nil, textonly: Bool? = nil) -> RequestBuilder<Article> {
+    open class func articleUuidGetWithRequestBuilder(uuid: UUID, authUser: UUID? = nil, authorization: String? = nil, xRealIp: String? = nil, textonly: Bool? = nil) -> RequestBuilder<Article> {
         var path = "/article/{uuid}"
         let uuidPreEscape = "\(APIHelper.mapValueToPathItem(uuid))"
         let uuidPostEscape = uuidPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -48,7 +50,8 @@ open class ArticlesAPI {
         ])
         let nillableHeaders: [String: Any?] = [
             "AuthUser": authUser,
-            "Authorization": authorization
+            "Authorization": authorization,
+            "X-Real-Ip": xRealIp
         ]
         let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
 

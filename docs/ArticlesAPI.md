@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 # **articleUuidGet**
 ```swift
-    open class func articleUuidGet(uuid: UUID, authUser: UUID? = nil, authorization: String? = nil, textonly: Bool? = nil, completion: @escaping (_ data: Article?, _ error: Error?) -> Void)
+    open class func articleUuidGet(uuid: UUID, authUser: UUID? = nil, authorization: String? = nil, xRealIp: String? = nil, textonly: Bool? = nil, completion: @escaping (_ data: Article?, _ error: Error?) -> Void)
 ```
 
 
@@ -25,9 +25,10 @@ import lettera
 let uuid = 987 // UUID | 
 let authUser = 987 // UUID |  (optional)
 let authorization = "authorization_example" // String |  (optional)
+let xRealIp = "xRealIp_example" // String |  (optional)
 let textonly = false // Bool |  (optional) (default to false)
 
-ArticlesAPI.articleUuidGet(uuid: uuid, authUser: authUser, authorization: authorization, textonly: textonly) { (response, error) in
+ArticlesAPI.articleUuidGet(uuid: uuid, authUser: authUser, authorization: authorization, xRealIp: xRealIp, textonly: textonly) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -46,6 +47,7 @@ Name | Type | Description  | Notes
  **uuid** | [**UUID**](.md) |  | 
  **authUser** | [**UUID**](.md) |  | [optional] 
  **authorization** | **String** |  | [optional] 
+ **xRealIp** | **String** |  | [optional] 
  **textonly** | **Bool** |  | [optional] [default to false]
 
 ### Return type
