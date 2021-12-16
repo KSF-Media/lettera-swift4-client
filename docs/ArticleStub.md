@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **uuid** | **UUID** |  | 
 **title** | **String** |  | 
+**articleTitle** | **String** |  | 
 **authors** | [Author] |  | 
 **tags** | **[String]** |  | 
 **preamble** | **String** |  | [optional] 

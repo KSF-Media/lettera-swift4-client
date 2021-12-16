@@ -13,6 +13,7 @@ public struct ArticleStub: Codable {
 
     public var uuid: UUID
     public var title: String
+    public var articleTitle: String
     public var authors: [Author]
     public var tags: [String]
     public var preamble: String?
@@ -28,9 +29,10 @@ public struct ArticleStub: Codable {
     public var liveReporting: Bool
     public var articlePriority: Int?
 
-    public init(uuid: UUID, title: String, authors: [Author], tags: [String], preamble: String?, listImage: ImageInfo?, premium: Bool, publishingTime: String, updateTime: String?, relatedArticles: [ArticleStub]?, articleType: ArticleType, articleTypeDetails: ArticleTypeDetails?, paper: Paper, shareUrl: String?, liveReporting: Bool, articlePriority: Int?) {
+    public init(uuid: UUID, title: String, articleTitle: String, authors: [Author], tags: [String], preamble: String?, listImage: ImageInfo?, premium: Bool, publishingTime: String, updateTime: String?, relatedArticles: [ArticleStub]?, articleType: ArticleType, articleTypeDetails: ArticleTypeDetails?, paper: Paper, shareUrl: String?, liveReporting: Bool, articlePriority: Int?) {
         self.uuid = uuid
         self.title = title
+        self.articleTitle = articleTitle
         self.authors = authors
         self.tags = tags
         self.preamble = preamble
