@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **authors** | [Author] |  | 
 **tags** | **[String]** |  | 
 **preamble** | **String** |  | [optional] 
+**mainImage** | [**ImageInfo**](ImageInfo.md) |  | [optional] 
 **listImage** | [**ImageInfo**](ImageInfo.md) |  | [optional] 
 **premium** | **Bool** |  | 
 **publishingTime** | **String** |  | 
