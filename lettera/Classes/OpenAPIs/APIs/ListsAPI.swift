@@ -39,6 +39,7 @@ open class ListsAPI {
     /**
      Returns a list for a front page
      - GET /frontpage
+     - responseHeaders: [Cache-Control(String)]
      - parameter start: (query)  (optional)
      - parameter limit: (query)  (optional)
      - parameter category: (query)  (optional)
@@ -90,6 +91,7 @@ open class ListsAPI {
     /**
      Returns a list of latest articles
      - GET /latest
+     - responseHeaders: [Cache-Control(String)]
      - parameter start: (query)  (optional)
      - parameter limit: (query)  (optional)
      - parameter paper: (query)  (optional)
@@ -141,6 +143,7 @@ open class ListsAPI {
     /**
      Returns a list of most read articles
      - GET /mostread
+     - responseHeaders: [Cache-Control(String)]
      - parameter start: (query)  (optional)
      - parameter limit: (query)  (optional)
      - parameter category: (query)  (optional)
@@ -461,6 +464,7 @@ open class ListsAPI {
     /**
      Returns a list of latest articles by tag
      - GET /tag/{tag}
+     - responseHeaders: [Cache-Control(String)]
      - parameter tag: (path)  
      - parameter start: (query)  (optional)
      - parameter limit: (query)  (optional)
