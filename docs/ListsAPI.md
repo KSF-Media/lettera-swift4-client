@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 # **frontpageGet**
 ```swift
-    open class func frontpageGet(start: Int? = nil, limit: Int? = nil, category: String? = nil, paper: Paper_frontpageGet? = nil, completion: @escaping (_ data: [ArticleStub]?, _ error: Error?) -> Void)
+    open class func frontpageGet(start: Int? = nil, limit: Int? = nil, category: String? = nil, paper: Paper_frontpageGet? = nil, completion: @escaping (_ data: Any?, _ error: Error?) -> Void)
 ```
 
 Returns a list for a front page
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[ArticleStub]**](ArticleStub.md)
+**Any**
 
 ### Authorization
 
@@ -65,13 +65,13 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json;charset=utf-8
+ - **Accept**: application/json;charset=utf-8, application/rss+xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **latestGet**
 ```swift
-    open class func latestGet(start: Int? = nil, limit: Int? = nil, paper: Paper_latestGet? = nil, completion: @escaping (_ data: [ArticleStub]?, _ error: Error?) -> Void)
+    open class func latestGet(start: Int? = nil, limit: Int? = nil, paper: Paper_latestGet? = nil, completion: @escaping (_ data: Any?, _ error: Error?) -> Void)
 ```
 
 Returns a list of latest articles
@@ -108,7 +108,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[ArticleStub]**](ArticleStub.md)
+**Any**
 
 ### Authorization
 
@@ -117,7 +117,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json;charset=utf-8
+ - **Accept**: application/json;charset=utf-8, application/rss+xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -455,7 +455,7 @@ No authorization required
 
 # **tagTagGet**
 ```swift
-    open class func tagTagGet(tag: String, start: Int? = nil, limit: Int? = nil, paper: Paper_tagTagGet? = nil, completion: @escaping (_ data: [ArticleStub]?, _ error: Error?) -> Void)
+    open class func tagTagGet(tag: String, start: Int? = nil, limit: Int? = nil, paper: Paper_tagTagGet? = nil, completion: @escaping (_ data: Any?, _ error: Error?) -> Void)
 ```
 
 Returns a list of latest articles by tag
@@ -494,7 +494,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[ArticleStub]**](ArticleStub.md)
+**Any**
 
 ### Authorization
 
@@ -503,7 +503,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json;charset=utf-8
+ - **Accept**: application/json;charset=utf-8, application/rss+xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
