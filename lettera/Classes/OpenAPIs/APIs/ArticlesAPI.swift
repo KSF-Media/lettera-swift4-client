@@ -29,6 +29,7 @@ open class ArticlesAPI {
     /**
      - GET /article/{uuid}
      - Fetch article by UUID.   Notes about the images:   The image URLs point to our image scaler, and are returned without scaling parameters.  However, if wanted, `width` and `height` parameters can be added to the querystring of the URL.  Also in list views, to ensure same size, it might be useful to crop the images by using the parameter `function=hardcrop`
+     - responseHeaders: [Cache-Control(String)]
      - parameter uuid: (path)  
      - parameter authUser: (header)  (optional)
      - parameter authorization: (header)  (optional)
