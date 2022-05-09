@@ -71,7 +71,7 @@ No authorization required
 
 # **latestGet**
 ```swift
-    open class func latestGet(start: Int? = nil, limit: Int? = nil, paper: Paper_latestGet? = nil, completion: @escaping (_ data: Any?, _ error: Error?) -> Void)
+    open class func latestGet(start: Int? = nil, limit: Int? = nil, paper: Paper_latestGet? = nil, category: String? = nil, completion: @escaping (_ data: Any?, _ error: Error?) -> Void)
 ```
 
 Returns a list of latest articles
@@ -84,9 +84,10 @@ import lettera
 let start = 987 // Int |  (optional)
 let limit = 987 // Int |  (optional)
 let paper = "paper_example" // String |  (optional)
+let category = "category_example" // String |  (optional)
 
 // Returns a list of latest articles
-ListsAPI.latestGet(start: start, limit: limit, paper: paper) { (response, error) in
+ListsAPI.latestGet(start: start, limit: limit, paper: paper, category: category) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -105,6 +106,7 @@ Name | Type | Description  | Notes
  **start** | **Int** |  | [optional] 
  **limit** | **Int** |  | [optional] 
  **paper** | **String** |  | [optional] 
+ **category** | **String** |  | [optional] 
 
 ### Return type
 
