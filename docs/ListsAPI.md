@@ -123,7 +123,7 @@ No authorization required
 
 # **mostreadGet**
 ```swift
-    open class func mostreadGet(start: Int? = nil, limit: Int? = nil, category: String? = nil, paper: Paper_mostreadGet? = nil, onlySubscribers: Bool? = nil, completion: @escaping (_ data: [ArticleStub]?, _ error: Error?) -> Void)
+    open class func mostreadGet(start: Int? = nil, limit: Int? = nil, category: String? = nil, paper: Paper_mostreadGet? = nil, onlySubscribers: Bool? = nil, completion: @escaping (_ data: Any?, _ error: Error?) -> Void)
 ```
 
 Returns a list of most read articles
@@ -164,7 +164,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[ArticleStub]**](ArticleStub.md)
+**Any**
 
 ### Authorization
 
