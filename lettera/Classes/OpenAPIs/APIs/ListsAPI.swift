@@ -400,14 +400,14 @@ open class ListsAPI {
     /**
      Returns a list of search results
      
+     - parameter contentQuery: (query)  
      - parameter start: (query)  (optional)
      - parameter limit: (query)  (optional)
      - parameter paper: (query)  (optional)
-     - parameter contentQuery: (query)  (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func searchGet(start: Int? = nil, limit: Int? = nil, paper: Paper_searchGet? = nil, contentQuery: String? = nil, completion: @escaping ((_ data: [ArticleStub]?,_ error: Error?) -> Void)) {
-        searchGetWithRequestBuilder(start: start, limit: limit, paper: paper, contentQuery: contentQuery).execute { (response, error) -> Void in
+    open class func searchGet(contentQuery: String, start: Int? = nil, limit: Int? = nil, paper: Paper_searchGet? = nil, completion: @escaping ((_ data: [ArticleStub]?,_ error: Error?) -> Void)) {
+        searchGetWithRequestBuilder(contentQuery: contentQuery, start: start, limit: limit, paper: paper).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -415,13 +415,13 @@ open class ListsAPI {
     /**
      Returns a list of search results
      - GET /search
+     - parameter contentQuery: (query)  
      - parameter start: (query)  (optional)
      - parameter limit: (query)  (optional)
      - parameter paper: (query)  (optional)
-     - parameter contentQuery: (query)  (optional)
      - returns: RequestBuilder<[ArticleStub]> 
      */
-    open class func searchGetWithRequestBuilder(start: Int? = nil, limit: Int? = nil, paper: Paper_searchGet? = nil, contentQuery: String? = nil) -> RequestBuilder<[ArticleStub]> {
+    open class func searchGetWithRequestBuilder(contentQuery: String, start: Int? = nil, limit: Int? = nil, paper: Paper_searchGet? = nil) -> RequestBuilder<[ArticleStub]> {
         let path = "/search"
         let URLString = letteraAPI.basePath + path
         let parameters: [String:Any]? = nil

@@ -403,7 +403,7 @@ No authorization required
 
 # **searchGet**
 ```swift
-    open class func searchGet(start: Int? = nil, limit: Int? = nil, paper: Paper_searchGet? = nil, contentQuery: String? = nil, completion: @escaping (_ data: [ArticleStub]?, _ error: Error?) -> Void)
+    open class func searchGet(contentQuery: String, start: Int? = nil, limit: Int? = nil, paper: Paper_searchGet? = nil, completion: @escaping (_ data: [ArticleStub]?, _ error: Error?) -> Void)
 ```
 
 Returns a list of search results
@@ -413,13 +413,13 @@ Returns a list of search results
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import lettera
 
+let contentQuery = "contentQuery_example" // String | 
 let start = 987 // Int |  (optional)
 let limit = 987 // Int |  (optional)
 let paper = "paper_example" // String |  (optional)
-let contentQuery = "contentQuery_example" // String |  (optional)
 
 // Returns a list of search results
-ListsAPI.searchGet(start: start, limit: limit, paper: paper, contentQuery: contentQuery) { (response, error) in
+ListsAPI.searchGet(contentQuery: contentQuery, start: start, limit: limit, paper: paper) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -435,10 +435,10 @@ ListsAPI.searchGet(start: start, limit: limit, paper: paper, contentQuery: conte
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **contentQuery** | **String** |  | 
  **start** | **Int** |  | [optional] 
  **limit** | **Int** |  | [optional] 
  **paper** | **String** |  | [optional] 
- **contentQuery** | **String** |  | [optional] 
 
 ### Return type
 
