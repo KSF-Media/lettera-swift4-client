@@ -37,7 +37,6 @@ Class | Method | HTTP request | Description
 *ListsAPI* | [**scoredPresetGet**](docs/ListsAPI.md#scoredpresetget) | **GET** /scored/{preset} | List recent articles sorted by preset scoring
 *ListsAPI* | [**searchGet**](docs/ListsAPI.md#searchget) | **GET** /search | Returns a list of search results
 *ListsAPI* | [**tagTagGet**](docs/ListsAPI.md#tagtagget) | **GET** /tag/{tag} | Returns a list of latest articles by tag
-*NotifiersAPI* | [**notifyPost**](docs/NotifiersAPI.md#notifypost) | **POST** /notify | Listens to OC Notifier
 
 
 ## Documentation For Models
@@ -53,9 +52,7 @@ Class | Method | HTTP request | Description
  - [BoxType](docs/BoxType.md)
  - [Category](docs/Category.md)
  - [Cutoff](docs/Cutoff.md)
- - [EventType](docs/EventType.md)
  - [ImageInfo](docs/ImageInfo.md)
- - [Notification](docs/Notification.md)
  - [Paper](docs/Paper.md)
  - [Scoring](docs/Scoring.md)
 
