@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **thumb** | **String** |  | 
 **tinyThumb** | **String** |  | 
 **thumbSize** | **Int** |  | [optional] 
+**aoiCropped** | **String** |  | [optional] 
 **caption** | **String** |  | [optional] 
 **alignment** | [**Alignment**](Alignment.md) |  | [optional] 
 **byline** | **String** |  | [optional] 

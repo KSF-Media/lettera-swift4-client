@@ -15,16 +15,18 @@ public struct ImageInfo: Codable {
     public var thumb: String
     public var tinyThumb: String
     public var thumbSize: Int?
+    public var aoiCropped: String?
     public var caption: String?
     public var alignment: Alignment?
     public var byline: String?
     public var classes: [String]
 
-    public init(url: String, thumb: String, tinyThumb: String, thumbSize: Int?, caption: String?, alignment: Alignment?, byline: String?, classes: [String]) {
+    public init(url: String, thumb: String, tinyThumb: String, thumbSize: Int?, aoiCropped: String?, caption: String?, alignment: Alignment?, byline: String?, classes: [String]) {
         self.url = url
         self.thumb = thumb
         self.tinyThumb = tinyThumb
         self.thumbSize = thumbSize
+        self.aoiCropped = aoiCropped
         self.caption = caption
         self.alignment = alignment
         self.byline = byline
