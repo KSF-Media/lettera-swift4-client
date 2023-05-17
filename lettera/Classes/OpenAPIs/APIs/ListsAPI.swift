@@ -79,12 +79,14 @@ open class ListsAPI {
      
      - parameter start: (query)  (optional)
      - parameter limit: (query)  (optional)
+     - parameter from: (query)  (optional)
+     - parameter to: (query)  (optional)
      - parameter paper: (query)  (optional)
      - parameter category: (query)  (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func latestGet(start: Int? = nil, limit: Int? = nil, paper: Paper_latestGet? = nil, category: String? = nil, completion: @escaping ((_ data: Any?,_ error: Error?) -> Void)) {
-        latestGetWithRequestBuilder(start: start, limit: limit, paper: paper, category: category).execute { (response, error) -> Void in
+    open class func latestGet(start: Int? = nil, limit: Int? = nil, from: String? = nil, to: String? = nil, paper: Paper_latestGet? = nil, category: String? = nil, completion: @escaping ((_ data: Any?,_ error: Error?) -> Void)) {
+        latestGetWithRequestBuilder(start: start, limit: limit, from: from, to: to, paper: paper, category: category).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -95,11 +97,13 @@ open class ListsAPI {
      - responseHeaders: [Cache-Control(String)]
      - parameter start: (query)  (optional)
      - parameter limit: (query)  (optional)
+     - parameter from: (query)  (optional)
+     - parameter to: (query)  (optional)
      - parameter paper: (query)  (optional)
      - parameter category: (query)  (optional)
      - returns: RequestBuilder<Any> 
      */
-    open class func latestGetWithRequestBuilder(start: Int? = nil, limit: Int? = nil, paper: Paper_latestGet? = nil, category: String? = nil) -> RequestBuilder<Any> {
+    open class func latestGetWithRequestBuilder(start: Int? = nil, limit: Int? = nil, from: String? = nil, to: String? = nil, paper: Paper_latestGet? = nil, category: String? = nil) -> RequestBuilder<Any> {
         let path = "/latest"
         let URLString = letteraAPI.basePath + path
         let parameters: [String:Any]? = nil
@@ -108,6 +112,8 @@ open class ListsAPI {
         url?.queryItems = APIHelper.mapValuesToQueryItems([
             "start": start?.encodeToJSON(), 
             "limit": limit?.encodeToJSON(), 
+            "from": from, 
+            "to": to, 
             "paper": paper?.rawValue, 
             "category": category
         ])
